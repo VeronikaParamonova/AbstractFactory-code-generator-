@@ -1,6 +1,3 @@
 #include "classunit.h"
 
-ClassUnit::ClassUnit()
-{
-
-}
+const std::vector< std::string > ClassUnit::ACCESS_MODIFIERS = { "public", "protected", "private" };

@@ -3,6 +3,7 @@
 #include "unit.h"
 #include <memory>
 #include <vector>
+#include <string>
 
 
 class MethodUnit : public Unit
@@ -14,8 +15,7 @@ public:
         VIRTUAL = 1 << 2
     };
 public:
-    MethodUnit( const std::string& name, const std::string& returnType, Flags flags ) :
-        m_name( name ), m_returnType( returnType ), m_flags( flags ) { }
+    MethodUnit( const std::string& name, const std::string& returnType, Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ) { }
     void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) {
         m_body.push_back( unit );
     }
@@ -43,7 +43,6 @@ private:
     std::string m_returnType;
     Flags m_flags;
     std::vector< std::shared_ptr< Unit > > m_body;
-};
 };
 
 #endif // METHODUNIT_H

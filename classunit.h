@@ -3,6 +3,7 @@
 #include "unit.h"
 #include <memory>
 #include <vector>
+#include <string>
 
 class ClassUnit : public Unit
 {
@@ -42,7 +43,9 @@ public:
     }
 private:
     std::string m_name;
-    std::vector<std::shared_ptr< Unit >> m_fields;
+    using Fields = std::vector< std::shared_ptr< Unit > >;
+    std::vector< Fields > m_fields;
 };
+
 
 #endif // CLASSUNIT_H

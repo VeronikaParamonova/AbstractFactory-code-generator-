@@ -2,6 +2,7 @@
 #define UNIT_H
 #include <memory>
 #include <vector>
+#include <string>
 
 class Unit
 {

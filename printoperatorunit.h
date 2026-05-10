@@ -3,6 +3,7 @@
 #include "unit.h"
 #include <memory>
 #include <vector>
+#include <string>
 
 class PrintOperatorUnit : public Unit
 {
