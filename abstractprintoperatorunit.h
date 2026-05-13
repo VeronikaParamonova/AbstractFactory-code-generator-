@@ -1,0 +1,11 @@
+#ifndef ABSTRACTPRINTOPERATORUNIT_H
+#define ABSTRACTPRINTOPERATORUNIT_H
+#include "unit.h"
+
+class AbstractPrintOperatorUnit: public Unit
+{
+public:
+    AbstractPrintOperatorUnit();
+};
+
+#endif // ABSTRACTPRINTOPERATORUNIT_H

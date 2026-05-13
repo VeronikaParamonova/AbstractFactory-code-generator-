@@ -7,10 +7,15 @@ CONFIG += c++17 cmdline
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        classunit.cpp \
+        abstractclassunit.cpp \
+        abstractfactory.cpp \
+        abstractmethodunit.cpp \
+        abstractprintoperatorunit.cpp \
+        cplusclassunit.cpp \
+        cplusfactory.cpp \
+        cplusmethodunit.cpp \
+        cplusprintoperatorunit.cpp \
         main.cpp \
-        methodunit.cpp \
-        printoperatorunit.cpp \
         unit.cpp
 
 # Default rules for deployment.
@@ -19,7 +24,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    classunit.h \
-    methodunit.h \
-    printoperatorunit.h \
+    abstractclassunit.h \
+    abstractfactory.h \
+    abstractmethodunit.h \
+    abstractprintoperatorunit.h \
+    cplusclassunit.h \
+    cplusfactory.h \
+    cplusmethodunit.h \
+    cplusprintoperatorunit.h \
     unit.h
