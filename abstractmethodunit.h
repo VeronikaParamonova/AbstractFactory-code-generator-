@@ -5,12 +5,12 @@
 class AbstractMethodUnit: public Unit
 {
 public:
-    enum Modifier {
-        STATIC = 1,
-        CONST = 1 << 1,
-        VIRTUAL = 1 << 2
-    };
-    AbstractMethodUnit();
+//    enum Modifier {
+//        STATIC = 1,
+//        CONST = 1 << 1,
+//        VIRTUAL = 1 << 2
+//    };
+    virtual ~AbstractMethodUnit() = default;
     virtual void add( const std::shared_ptr< Unit >& , Flags = 0 ) =0;
 };
 

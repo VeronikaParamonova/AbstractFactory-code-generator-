@@ -7,7 +7,7 @@
 class Unit
 {
 public:
-    using Flags = unsigned int;
+    using Flags = unsigned int; // создание псевдонима для сложного типа
 public:
     virtual ~Unit() = default;
 

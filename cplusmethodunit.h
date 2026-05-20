@@ -9,14 +9,14 @@
 class CPlusMethodUnit : public AbstractMethodUnit
 {
 public:
-//    enum Modifier {
-//        STATIC = 1,
-//        CONST = 1 << 1,
-//        VIRTUAL = 1 << 2
-//    };
-public:
-    CPlusMethodUnit( const std::string& name, const std::string& returnType, Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ) { }
-    void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) {
+    enum Modifier {
+                STATIC = 1,
+                CONST = 1 << 1,
+                VIRTUAL = 1 << 2
+            };
+    CPlusMethodUnit( const std::string& name, const std::string& returnType, Unit::Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ) { }
+    void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 )
+    {
         m_body.push_back( unit );
     }
     std::string compile( unsigned int level = 0 ) const {

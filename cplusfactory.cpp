@@ -1,6 +1,3 @@
 #include "cplusfactory.h"
 
-CPlusFactory::CPlusFactory()
-{
-
-}
+CPlusFactory::CPlusFactory() = default;

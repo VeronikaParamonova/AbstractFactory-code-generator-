@@ -1,6 +1,3 @@
 #include "abstractprintoperatorunit.h"
 
-AbstractPrintOperatorUnit::AbstractPrintOperatorUnit()
-{
-
-}
+AbstractPrintOperatorUnit::AbstractPrintOperatorUnit() = default;

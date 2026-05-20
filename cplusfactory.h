@@ -10,17 +10,17 @@ class CPlusFactory: public AbstractFactory
 public:
     CPlusFactory();
 
-    AbstractClassUnit* createClassUnit(const std::string& name)
+    std::shared_ptr<AbstractClassUnit> createClassUnit(const std::string& name, Unit::Flags mod)
     {
-        return new CPlusClassUnit(name);
+        return std::make_shared<CPlusClassUnit>(name);
     }
-    AbstractMethodUnit* createMethodUnit(const std::string& name, const std::string& returnType, Unit::Flags flags)
+    std::shared_ptr<AbstractMethodUnit> createMethodUnit(const std::string& name, const std::string& returnType, Unit::Flags flags)
     {
-        return new CPlusMethodUnit(name, returnType, flags);
+        return std::make_shared<CPlusMethodUnit>(name, returnType, flags);
     }
-    AbstractPrintOperatorUnit* createPrintOperatorUnit(const std::string& text)
+    std::shared_ptr<AbstractPrintOperatorUnit> createPrintOperatorUnit(const std::string& text)
     {
-        return new CPlusPrintOperatorUnit(text);
+        return std::make_shared<CPlusPrintOperatorUnit>(text);
     }
 };
 

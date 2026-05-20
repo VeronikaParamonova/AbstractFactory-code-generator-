@@ -15,6 +15,10 @@ SOURCES += \
         cplusfactory.cpp \
         cplusmethodunit.cpp \
         cplusprintoperatorunit.cpp \
+        csharpclassunit.cpp \
+        csharpfactory.cpp \
+        csharpmethodunit.cpp \
+        csharpprintoperatorunit.cpp \
         main.cpp \
         unit.cpp
 
@@ -32,4 +36,8 @@ HEADERS += \
     cplusfactory.h \
     cplusmethodunit.h \
     cplusprintoperatorunit.h \
+    csharpclassunit.h \
+    csharpfactory.h \
+    csharpmethodunit.h \
+    csharpprintoperatorunit.h \
     unit.h
