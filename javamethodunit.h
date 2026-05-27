@@ -1,5 +1,5 @@
-#ifndef CSHARPMETHODUNIT_H
-#define CSHARPMETHODUNIT_H
+#ifndef JAVAMETHODUNIT_H
+#define JAVAMETHODUNIT_H
 
 #include "abstractmethodunit.h"
 #include <memory>
@@ -7,23 +7,13 @@
 #include <stdexcept>
 #include <string>
 
-class CSharpMethodUnit : public AbstractMethodUnit
+class JavaMethodUnit : public AbstractMethodUnit
 {
 public:
 
-    CSharpMethodUnit( const std::string& name, const std::string& returnType, Unit::Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags )
-    {
-        if ((flags & STATIC) && (flags & VIRTUAL))
-        {
-            throw std::invalid_argument("method C# cannot be static AND virtual");
-        }
-        if ((flags & ABSTRACT) && (flags & VIRTUAL))
-        {
-            throw std::invalid_argument("method C# cannot be abstract AND virtual");
-        }
-    }
+    JavaMethodUnit( const std::string& name, const std::string& returnType, Unit::Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ) { }
     void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) override
-    {   
+    {
         m_body.push_back( unit );
     }
     std::string compile( unsigned int level = 0 ) const override
@@ -31,8 +21,12 @@ public:
         std::string result = generateShift( level );
         if( m_flags & STATIC ) {
             result += "static ";
-        } else if( m_flags & VIRTUAL ) {
-            result += "virtual ";
+        }
+        if( m_flags & ABSTRACT ) {
+            result += "abstract ";
+        }
+        if( m_flags & FINAL ) {
+            result += "final ";
         }
         result += m_returnType + " ";
         result += m_name + "()";
@@ -61,4 +55,4 @@ private:
     std::vector< std::shared_ptr< Unit > > m_body;
 };
 
-#endif // CSHARPMETHODUNIT_H
+#endif // JAVAMETHODUNIT_H

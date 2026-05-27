@@ -5,7 +5,6 @@
 class AbstractPrintOperatorUnit: public Unit
 {
 public:
-    AbstractPrintOperatorUnit();
     virtual ~AbstractPrintOperatorUnit() = default;
 };
 

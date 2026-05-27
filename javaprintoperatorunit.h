@@ -1,15 +1,15 @@
-#ifndef CSHARPPRINTOPERATORUNIT_H
-#define CSHARPPRINTOPERATORUNIT_H
+#ifndef JAVAPRINTOPERATORUNIT_H
+#define JAVAPRINTOPERATORUNIT_H
 
 #include "abstractprintoperatorunit.h"
 
-class CSharpPrintOperatorUnit : public AbstractPrintOperatorUnit
+class JavaPrintOperatorUnit : public AbstractPrintOperatorUnit
 {
 public:
-    explicit CSharpPrintOperatorUnit( const std::string& text ) : m_text( text ) { }
+    explicit JavaPrintOperatorUnit( const std::string& text ) : m_text( text ) { }
     std::string compile( unsigned int level = 0 ) const override
     {
-        return generateShift( level ) + "Console.WriteLine( \"" + m_text + "\" );\n";
+        return generateShift( level ) + "System.out.println( \"" + m_text + "\" );\n";
     }
 protected:
     std::string generateShift( unsigned int level ) const override
@@ -26,4 +26,4 @@ private:
     std::string m_text;
 };
 
-#endif // CSHARPPRINTOPERATORUNIT_H
+#endif // JAVAPRINTOPERATORUNIT_H

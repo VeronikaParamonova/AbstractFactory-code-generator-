@@ -1,21 +1,25 @@
-#ifndef CSHARPCLASSUNIT_H
-#define CSHARPCLASSUNIT_H
+#ifndef JAVACLASSUNIT_H
+#define JAVACLASSUNIT_H
 
 #include "abstractclassunit.h"
 #include <memory>
 #include <vector>
 #include <string>
 
-class CSharpClassUnit : public AbstractClassUnit
+class JavaClassUnit : public AbstractClassUnit
 {
 public:
 
     static const std::vector< std::string > ACCESS_MODIFIERS;
 
-    explicit CSharpClassUnit( const std::string& name, Flags flag = PUBLIC) : m_name( name ), m_flag(flag) {
+    explicit JavaClassUnit( const std::string& name, Flags flag = PUBLIC) : m_name( name ), m_flag(flag)
+    {
         m_fields.resize( ACCESS_MODIFIERS.size() );
 
-
+        if ((flag & ABSTRACT) && (flag & FINAL))
+        {
+            throw std::invalid_argument("class Java cannot be abstract AND final");
+        }
     }
     void add( const std::shared_ptr< Unit >& unit, Flags flags ) override
     {
@@ -64,4 +68,4 @@ private:
 
 };
 
-#endif // CSHARPCLASSUNIT_H
+#endif // JAVACLASSUNIT_H
