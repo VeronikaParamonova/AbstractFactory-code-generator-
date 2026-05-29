@@ -5,17 +5,31 @@
 #include <vector>
 #include <stdexcept>
 #include <string>
+#include <iostream>
 
 
 class CPlusMethodUnit : public AbstractMethodUnit
 {
 public:
 
+    enum Modifier {
+        STATIC  = 1 << 0,
+        CONST   = 1 << 1,
+        VIRTUAL = 1 << 2
+    };
+
     CPlusMethodUnit( const std::string& name, const std::string& returnType, Unit::Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags )
     {
         if ((flags & STATIC) && (flags & VIRTUAL))
         {
-            throw std::invalid_argument("method C++ cannot be static AND virtual");
+            std::cout<<"method "<< name << " C++ cannot be static AND virtual"<<std::endl;
+            m_flags = 0;
+        }
+
+        if ((flags & STATIC) && (flags & CONST))
+        {
+            std::cout<<"method "<< name << " C++ cannot be static AND const"<<std::endl;
+            m_flags = 0;
         }
     }
     void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) override
@@ -48,7 +62,7 @@ public:
 protected:
     std::string generateShift( unsigned int level ) const override
     {
-        static const auto DEFAULT_SHIFT = " ";
+        static const auto DEFAULT_SHIFT = "    ";
         std::string result;
         for( unsigned int i = 0; i < level; ++i )
         {

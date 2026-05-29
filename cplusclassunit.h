@@ -4,10 +4,17 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <iostream>
 
 class CPlusClassUnit : public AbstractClassUnit
 {
 public:
+
+    enum AccessModifier {
+                        PUBLIC = 0,
+                        PROTECTED = 1,
+                        PRIVATE = 2
+    };
 
     static const std::vector< std::string > ACCESS_MODIFIERS;
 
@@ -41,7 +48,7 @@ public:
 protected:
     std::string generateShift( unsigned int level ) const override
     {
-        static const auto DEFAULT_SHIFT = " ";
+        static const auto DEFAULT_SHIFT = "    ";
         std::string result;
         for( unsigned int i = 0; i < level; ++i )
         {

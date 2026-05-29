@@ -14,7 +14,7 @@ public:
 protected:
     std::string generateShift( unsigned int level ) const override
     {
-        static const auto DEFAULT_SHIFT = " ";
+        static const auto DEFAULT_SHIFT = "    ";
         std::string result;
         for( unsigned int i = 0; i < level; ++i )
         {

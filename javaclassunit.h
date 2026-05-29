@@ -5,10 +5,21 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <iostream>
 
 class JavaClassUnit : public AbstractClassUnit
 {
 public:
+
+    enum AccessModifier
+    {
+                NON = 0,
+                PUBLIC = 1,
+                PROTECTED = 2,
+                PRIVATE = 3,
+                FINAL = 4,
+                ABSTRACT = 5
+            };
 
     static const std::vector< std::string > ACCESS_MODIFIERS;
 
@@ -16,14 +27,33 @@ public:
     {
         m_fields.resize( ACCESS_MODIFIERS.size() );
 
-        if ((flag & ABSTRACT) && (flag & FINAL))
+        int accessModifier;
+        if( flag == PUBLIC)
         {
-            throw std::invalid_argument("class Java cannot be abstract AND final");
+            accessModifier = PUBLIC;
         }
+        else if( flag == ABSTRACT)
+        {
+            int accessModifier = ABSTRACT;
+        }
+        else if( flag == FINAL)
+        {
+            int accessModifier = FINAL;
+        }
+        else if( flag == NON)
+        {
+            int accessModifier = NON;
+        }
+        else
+        {
+            std::cout<<"class "<< name << " Java can be also public or abstract or final"<<std::endl;
+            int accessModifier = NON;
+        }
+        m_flag = accessModifier;
     }
     void add( const std::shared_ptr< Unit >& unit, Flags flags ) override
     {
-        int accessModifier = PRIVATE;
+        int accessModifier = NON;
         if( flags < ACCESS_MODIFIERS.size() ) {
             accessModifier = flags;
         }
@@ -32,8 +62,15 @@ public:
     std::string compile( unsigned int level = 0 ) const override
     {
         std::string result = generateShift( level );
-        if(m_flag >= 0 && m_flag  < ACCESS_MODIFIERS.size() ) {
-            result += ACCESS_MODIFIERS[ m_flag ] + " ";
+        if( m_flag  < ACCESS_MODIFIERS.size() ) {
+            if(m_flag == NON)
+            {
+                result += ACCESS_MODIFIERS[ m_flag ];
+            }
+            else
+            {
+                result += ACCESS_MODIFIERS[ m_flag ] + " ";
+            }
         }
 
         result += "class " + m_name + " {\n";
@@ -41,8 +78,16 @@ public:
             if( m_fields[ i ].empty() ) {
                 continue;
             }
-            for( const auto& f : m_fields[ i ] ) {
-                result += generateShift(level + 1) + ACCESS_MODIFIERS[i] + " " + f->compile(level + 1);
+            for( const auto& f : m_fields[ i ] )
+            {
+                if(i == 5 || i == 0 || i == 4)
+                {
+                    result += generateShift(level + 1) + f->compile(level + 1);
+                }
+                else
+                {
+                    result += generateShift(level + 1) + ACCESS_MODIFIERS[i] + " " + f->compile(level + 1);
+                }
             }
             result += "\n";
         }
@@ -53,7 +98,7 @@ public:
 protected:
     std::string generateShift( unsigned int level ) const override
     {
-        static const auto DEFAULT_SHIFT = " ";
+        static const auto DEFAULT_SHIFT = "    ";
         std::string result;
         for( unsigned int i = 0; i < level; ++i ) {
             result += DEFAULT_SHIFT;
