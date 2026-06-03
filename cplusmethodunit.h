@@ -22,13 +22,17 @@ public:
     {
         if ((flags & STATIC) && (flags & VIRTUAL))
         {
-            std::cout<<"method "<< name << " C++ cannot be static AND virtual"<<std::endl;
+            //std::cout<<"method "<< name << " C++ cannot be static AND virtual"<<std::endl;
+            std::string message = "method " + name + " C++ cannot be static AND virtual";
+            emit logMessage(message);
             m_flags = 0;
         }
 
         if ((flags & STATIC) && (flags & CONST))
         {
-            std::cout<<"method "<< name << " C++ cannot be static AND const"<<std::endl;
+            //std::cout<<"method "<< name << " C++ cannot be static AND const"<<std::endl;
+            std::string message = "method " + name + " C++ cannot be static AND const";
+            emit logMessage(message);
             m_flags = 0;
         }
     }

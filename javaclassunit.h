@@ -46,7 +46,9 @@ public:
         }
         else
         {
-            std::cout<<"class "<< name << " Java can be also public or abstract or final"<<std::endl;
+            //std::cout<<"class "<< name << " Java can be also public or abstract or final"<<std::endl;
+            std::string message = "class " + name + " Java can be also public or abstract or final";
+            emit logMessage(message);
             int accessModifier = NON;
         }
         m_flag = accessModifier;

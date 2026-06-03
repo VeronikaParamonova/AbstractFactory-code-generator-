@@ -22,12 +22,16 @@ public:
     {
         if ((flags & STATIC) && (flags & ABSTRACT))
         {
-            std::cout<<"method "<< name << " Java cannot be static AND abstract"<<std::endl;
+            //std::cout<<"method "<< name << " Java cannot be static AND abstract"<<std::endl;
+            std::string message = "method " + name + " Java cannot be static AND abstract";
+            emit logMessage(message);
             m_flags = 0;
         }
         if ((flags & ABSTRACT) && (flags & FINAL))
         {
-            std::cout<<"method "<< name << " Java cannot be abstract AND final"<<std::endl;
+            //std::cout<<"method "<< name << " Java cannot be abstract AND final"<<std::endl;
+            std::string message = "method " + name + " Java cannot be abstract AND final";
+            emit logMessage(message);
             m_flags = 0;
         }
     }
