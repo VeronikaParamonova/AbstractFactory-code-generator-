@@ -6,7 +6,6 @@
 #include <vector>
 #include <stdexcept>
 #include <string>
-#include <iostream>
 
 class CSharpMethodUnit : public AbstractMethodUnit
 {
@@ -23,22 +22,30 @@ public:
     {
         if ((flags & STATIC) && (flags & VIRTUAL))
         {
-            std::cout<<"method "<< name << " C# cannot be static AND virtual"<<std::endl;
+            //std::cout<<"method "<< name << " C# cannot be static AND virtual"<<std::endl;
+            std::string message = "method " + name + " C# cannot be static AND virtual";
+            emit logMessage(message);
             m_flags = 0;
         }
         if ((flags & ABSTRACT) && (flags & VIRTUAL))
         {
-            std::cout<<"method "<< name << " C# cannot be abstract AND virtual"<<std::endl;
+            //std::cout<<"method "<< name << " C# cannot be abstract AND virtual"<<std::endl;
+            std::string message = "method " + name + " C# cannot be abstract AND virtual";
+            emit logMessage(message);
             m_flags = 0;
         }
         if ((flags & ABSTRACT) && (flags & SEALED))
         {
-            std::cout<<"method "<< name << " C# cannot be abstract AND sealed"<<std::endl;
+            //std::cout<<"method "<< name << " C# cannot be abstract AND sealed"<<std::endl;
+            std::string message = "method " + name + " C# cannot be abstract AND sealed";
+            emit logMessage(message);
             m_flags = 0;
         }
         if ((flags & ABSTRACT) && (flags & STATIC))
         {
-            std::cout<<"method "<< name << " C# cannot be abstract AND static"<<std::endl;
+            //std::cout<<"method "<< name << " C# cannot be abstract AND static"<<std::endl;
+            std::string message = "method " + name + " C# cannot be abstract AND static";
+            emit logMessage(message);
             m_flags = 0;
         }
 

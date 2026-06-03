@@ -46,7 +46,9 @@ public:
         }
         else
         {
-            std::cout<<"class "<< name << " C# can be also public or internal or file"<<std::endl;
+            //std::cout<<"class "<< name << " C# can be also public or internal or file"<<std::endl;
+            std::string message = "class " + name + " C# can be also public or internal or file";
+            emit logMessage(message);
             int accessModifier = NON;
         }
         m_flag = accessModifier;

@@ -19,10 +19,12 @@ SOURCES += \
         csharpfactory.cpp \
         csharpmethodunit.cpp \
         csharpprintoperatorunit.cpp \
+        ilog.cpp \
         javaclassunit.cpp \
         javafactory.cpp \
         javamethodunit.cpp \
         javaprintoperatorunit.cpp \
+        logtoconsole.cpp \
         main.cpp \
         unit.cpp
 
@@ -44,8 +46,10 @@ HEADERS += \
     csharpfactory.h \
     csharpmethodunit.h \
     csharpprintoperatorunit.h \
+    ilog.h \
     javaclassunit.h \
     javafactory.h \
     javamethodunit.h \
     javaprintoperatorunit.h \
+    logtoconsole.h \
     unit.h

@@ -16,6 +16,7 @@
 #include "Javaclassunit.h"
 #include "Javamethodunit.h"
 #include "Javaprintoperatorunit.h"
+#include "LogToConsole.h"
 
 
 
@@ -108,9 +109,11 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    CPlusFactory cplusFactory;
-    CSharpFactory csharpFactory;
-    JavaFactory javaFactory;
+    LogToConsole logger;
+
+    CPlusFactory cplusFactory(&logger);
+    CSharpFactory csharpFactory(&logger);
+    JavaFactory javaFactory(&logger);
 
     std::cout << "ProgrammTEST1" << std::endl;
     std::cout << std::endl;
